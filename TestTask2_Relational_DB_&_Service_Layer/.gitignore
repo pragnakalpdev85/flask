@@ -1,0 +1,3 @@
+env_task/
+.env
+__pycache__/
