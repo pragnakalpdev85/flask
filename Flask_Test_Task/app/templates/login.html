@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{% block title %} Login {% endblock %}</h1>
+    <form method="post" onsubmit="return onSubmit()">
+        <label for="Email">Email</label>
+        <input id="email-input" type="email" name="email"
+                placeholder="enter Email"
+                value="{{ request.form['email'] }}">
+        <div id="email-alert" class="alert">Email field is required</div>
+
+        <label for="passsword">Passsword</label>
+        <input id="password-input" type="password" name="password"
+                placeholder="Enter password" 
+                value="{{ request.form['password'] }}">
+        <div id="pass-alert" class="alert">Passsword field is required</div>
+
+        <button type="submit">Submit</button>
+       <p>Don't have an account? <a href=" {{ url_for('users.register') }} ">Register</a></p>
+    </form>
+    {% if message %}
+        <script>
+            alert("{{ message }}");
+        </script>
+    {% endif %}
+{% endblock %}

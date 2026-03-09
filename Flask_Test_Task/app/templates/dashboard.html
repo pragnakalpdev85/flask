@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{% block title %} User {% endblock %}</h1>
+    <div class="d_name"><strong>First Name : </strong>{{ user['first_name'] }}</div>
+    <div class="d_name"><strong>Last Name :</strong> {{ user['last_name'] }}</div>
+    <div class="d_name"><strong>Email :</strong> {{ user['email'] }}</div>
+    <div class="d_name"><strong>Address :</strong> {{ user['address'] }}</div>
+    <div class="d_name"><strong>Hobbies :</strong> {{ user['hobbies'] }}</div>
+    <div class="d_name"><strong>Gender :</strong> {{ user['gender'] }}</div>
+    <p><a href=" {{ url_for('users.login') }} ">Logout</a></p>
+{% endblock %}

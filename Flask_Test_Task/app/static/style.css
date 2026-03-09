@@ -1,0 +1,135 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items:flex-start;
+    justify-content: center;
+    font-family: sans-serif;
+}
+
+.content {
+    padding: 60px;
+    margin-top: 100px;
+    border: 2px solid black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: large;
+    margin-top: 10px;
+}
+
+input {
+    width: 280px;
+    height: 30px;
+    font-size: large;
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+button {
+    width: 290px;
+    height: 40px;
+    font-size: large;
+    margin-top: 35px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(22, 131, 255);
+    color: white;
+}
+
+.alert {
+    visibility: hidden;
+    height: 0;
+}
+
+.alert-show {
+    visibility: visible;
+    margin-top: 5px;
+    color: red;
+}
+
+.form_c {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+p {
+    margin-top: 8px;
+}
+
+.form_c > label {
+    display: flex;
+    margin: 0;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.bigtext {
+    height: 110px;
+    width: 290px;
+    border-radius: 10px;
+    text-align:justify;
+    padding: 3px;
+}
+
+.checkbox {
+    width: 20px;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.hobbies, .gender {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.op {
+    font-size: large;
+    margin: 0;
+}
+
+.d_name {
+    align-self: flex-start;
+    font-size: large;
+}
+
+.input-containers{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.register {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}  
+
+button {
+    align-self: center;
+}
+
+.link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
