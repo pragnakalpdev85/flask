@@ -2,24 +2,28 @@
 {% block content %}
     <h1>{% block title %} Login {% endblock %}</h1>
     <form method="post" onsubmit="return onSubmit()">
-        <label for="Email">Email</label>
+        <label class="tag" for="Email">Email</label>
         <input id="email-input" type="email" name="email"
-                placeholder="enter Email"
+                placeholder="Email"
                 value="{{ request.form['email'] }}">
         <div id="email-alert" class="alert">Email field is required</div>
 
-        <label for="passsword">Passsword</label>
+        <label class="tag" for="passsword">Passsword</label>
         <input id="password-input" type="password" name="password"
-                placeholder="Enter password" 
+                placeholder="Password" 
                 value="{{ request.form['password'] }}">
         <div id="pass-alert" class="alert">Passsword field is required</div>
+        <div class="login-alert" id="alert-msg">{{ message }}</div>
 
         <button type="submit">Submit</button>
-       <p>Don't have an account? <a href=" {{ url_for('users.register') }} ">Register</a></p>
+       <p class="link">Don't have an account? <a href=" {{ url_for('users.register') }} ">Register</a></p>
     </form>
     {% if message %}
-        <script>
-            alert("{{ message }}");
-        </script>
+    <script>
+        loginAlert = document.getElementById('alert-msg');
+
+        loginAlert.className = 'show-login-alert'
+    </script>
     {% endif %}
 {% endblock %}
+

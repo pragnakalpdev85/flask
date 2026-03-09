@@ -9,17 +9,31 @@ body {
     align-items:flex-start;
     justify-content: center;
     font-family: sans-serif;
+    background: linear-gradient( rgb(106, 0, 206), rgb(0, 62, 177));
 }
 
 .content {
     padding: 60px;
     margin-top: 100px;
-    border: 2px solid black;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
+    background-color: white;
+    box-shadow: 0 0 30px rgb(9, 99, 126);
+}
+
+.detail-c {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.tag {
+    font-weight: bold;
+    color: rgb(20, 20, 20);
 }
 
 form {
@@ -39,6 +53,14 @@ input {
     border: 1px solid grey;
     border-radius: 8px;
     padding: 5px;
+    box-shadow: 0 0 40px rgb(234, 212, 255);
+}
+
+textarea {
+    font-size: large;
+    padding: 5px;
+    font-family: sans-serif;
+    box-shadow: 0 0 40px rgb(242, 228, 255);
 }
 
 button {
@@ -48,7 +70,8 @@ button {
     margin-top: 35px;
     border: none;
     border-radius: 8px;
-    background-color: rgb(22, 131, 255);
+    background: linear-gradient( rgb(152, 42, 255), rgb(93, 150, 255));
+    font-weight: bold;
     color: white;
 }
 
@@ -133,3 +156,52 @@ button {
     align-items: center;
 }
 
+.heading {
+    margin-bottom: 15px;
+    font-size: 40px;
+}
+
+a {
+    font-size: large;
+}
+
+.login-alert {
+    visibility: hidden;
+    height: 0;
+}
+
+.show-login-alert {
+    visibility: visible;
+    margin-top: 5px;
+    color: red;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+}
+
+#change-pass-button {
+    width: 20px;
+    margin: 0px 10px;
+    margin-top: 30px;
+}
+
+#change-pass{
+    font-size: large;
+    display: flex;
+    align-self: start;
+}
+
+span {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+@media (max-width: 1024px) {
+    .content {
+        width: 50%;
+        height: 50%;
+    }
+}

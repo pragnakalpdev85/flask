@@ -1,58 +1,58 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>{% block title %} Register {% endblock %}</h1>
+<h1>{% block title %} Registration Form {% endblock %}</h1>
 <form method="post" onsubmit="return onRegister()">
 
     <div class="form_c register">
         <div class="input-containers">
-            <label for="first_name">First Name</label>
-            <input id="f_name" type="first_name" name="first_name" placeholder="Enter First Name" maxlength="30"
+            <label class="tag" for="first_name">First name</label>
+            <input id="f_name" type="first_name" name="first_name" placeholder="First name" maxlength="30"
                 value="{{ request.form['first_name'] }}">
             <div class="alert" id="f_name-alert">First name field is required</div>
         </div>
 
         <div class="input-containers">
-            <label for="last_name">Last Name</label>
-            <input id="l_name" type="last_name" name="last_name" placeholder="Enter Last Name"
+            <label class="tag" for="last_name">Last name</label>
+            <input id="l_name" type="last_name" name="last_name" placeholder="Last name"
                 value="{{ request.form['last_name'] }}">
             <div class="alert" id="l_name-alert">Last name field is required</div>
         </div>
         <div class="input-containers">
-            <label for="Email">Email</label>
-            <input id="r_email" type="email" name="email" placeholder="enter Email" value="{{ request.form['email'] }}">
+            <label class="tag" for="Email">Email</label>
+            <input id="r_email" type="email" name="email" placeholder="Email" value="{{ request.form['email'] }}">
             <div class="alert" id="r_email-alert">Email field is required</div>
         </div>
         <div class="input-containers">
-            <label for="gender">Gender</label>
+            <label class="tag" for="gender">Gender</label>
             <div class="gender">
                 <input class="checkbox" type="radio" name="gender" value="male"> <label class="op"
                     for="male">Male</label>
                 <input class="checkbox" type="radio" name="gender" value="female"><label class="op"
                     for="female">Female</label>
             </div>
-            <div class="alert" id="gender-alert">Select Gender</div>
+            <div class="alert" id="gender-alert">Select gender</div>
         </div>
 
         <div class="input-containers">
-            <label for="passsword">Passsword</label>
-            <input id="r_pass" type="password" name="password" placeholder="Enter password"
+            <label class="tag" for="passsword">Passsword</label>
+            <input id="r_pass" type="password" name="password" placeholder="Password"
                 value="{{ request.form['password'] }}">
             <div class="alert" id="r_pass-alert">Password field is required</div>
-            <label for="Confirm_passsword">Confirm Passsword</label>
+            <label class="tag" for="Confirm_passsword">Confirm passsword</label>
             <input id="rc_pass" type="password" name="Confirm_password" placeholder="Confirm password"
                 value="{{ request.form['c_password'] }}">
-            <div class="alert" id="rc_pass-alert">Password Confirmation field is required</div>
+            <div class="alert" id="rc_pass-alert">Password confirmation field is required</div>
         </div>
 
         <div class="input-containers">
-            <label for="address">Address</label>
-            <textarea id="address" name="address" placeholder="address"
+            <label class="tag" for="address">Address</label>
+            <textarea id="address" name="address" placeholder="Address"
                 class="bigtext">{{ request.form['address'] }}</textarea>
-            <div class="alert" id="address-alert">Address Field is required</div>
+            <div class="alert" id="address-alert">Address field is required</div>
         </div>
     </div>
     <div class="input-containers">
-        <label for="hobbies">Hobbies</label>
+        <label class="tag" for="hobbies">Hobbies</label>
         <div class="hobbies">
             <input class="checkbox" type="checkbox" name="option" value='reading'> Reading
             <input class="checkbox" type="checkbox" name="option" value='writing'> Writing
@@ -63,12 +63,15 @@
         </div>
         <div class="alert" id="hobbies-alert">Select atleast one hobby</div>
     </div>
+    <div class="login-alert" id="alert-msg">{{ message }}</div>
     <button type="submit">Submit</button>
     <p class="link">Already have an account? <a href=" {{ url_for('users.login') }} ">Login</a></p>
 </form>
 {% if message %}
 <script>
-    alert("{{ message }}");
+    loginAlert = document.getElementById('alert-msg');
+
+    loginAlert.className = 'show-login-alert'
 </script>
 {% endif %}
 {% endblock %}

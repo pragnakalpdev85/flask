@@ -1,11 +1,109 @@
 {% extends 'base.html' %}
 {% block content %}
-    <h1>{% block title %} User {% endblock %}</h1>
+<div class="detail-c" id="edit">
+    <h1 class="heading">{% block title %} User Details {% endblock %}</h1>
     <div class="d_name"><strong>First Name : </strong>{{ user['first_name'] }}</div>
     <div class="d_name"><strong>Last Name :</strong> {{ user['last_name'] }}</div>
     <div class="d_name"><strong>Email :</strong> {{ user['email'] }}</div>
     <div class="d_name"><strong>Address :</strong> {{ user['address'] }}</div>
     <div class="d_name"><strong>Hobbies :</strong> {{ user['hobbies'] }}</div>
     <div class="d_name"><strong>Gender :</strong> {{ user['gender'] }}</div>
-    <p><a href=" {{ url_for('users.login') }} ">Logout</a></p>
+    <div class="login-alert" id="alert-msg">{{ message }}</div>
+    <button onclick="editUser()">Edit</button>
+</div>
+
+<p><a href=" {{ url_for('users.login') }} ">Logout</a></p>
+{% if message %}
+<script>
+    loginAlert = document.getElementById('alert-msg');
+
+    loginAlert.className = 'show-login-alert'
+</script>
+{% endif %}
+<script>
+    let editFields = document.getElementById('edit')
+    function editUser() {
+
+        let genderSelect = '';
+        let hobbiesSelect = '';
+
+        list_hobbies = ['reading', 'writing', 'movies', 'drawing', 'cooking', 'sports']
+
+        if( "{{ user['gender'] }}"  == 'male'){
+            genderSelect = `<div class="input-containers">
+                <label class="tag" for="gender">Gender</label>
+                <div class="gender">
+                    <input class="checkbox" type="radio" name="e_gender" value="male" checked = 'checked'> <label class="op"
+                        for="male">Male</label>
+                    <input class="checkbox" type="radio" name="e_gender" value="female"><label class="op"
+                        for="female">Female</label>
+                </div>
+                <div class="alert" id="e_gender-alert">Select gender</div>
+            </div>`;
+        }else{
+            genderSelect = `<div class="input-containers">
+                <label class="tag" for="gender">Gender</label>
+                <div class="gender">
+                    <input class="checkbox" type="radio" name="e_gender" value="male"> <label class="op"
+                        for="male">Male</label>
+                    <input class="checkbox" type="radio" name="e_gender" value="female" checked = 'checked'><label class="op"
+                        for="female">Female</label>
+                </div>
+                <div class="alert" id="e_gender-alert">Select gender</div>
+            </div>`;
+        }
+
+        let strHobbies = "{{ user['hobbies'] }}";
+        let list = []
+        list = strHobbies.split(', ');
+
+        for(let i of list_hobbies){
+            if(list.includes(i)){
+                hobbiesSelect += `<input class="checkbox" type="checkbox" name="e_option" value='${i}' checked = 'checked'> ${i}`
+            }else{
+                hobbiesSelect += `<input class="checkbox" type="checkbox" name="e_option" value='${i}'> ${i}`
+            }
+        }
+
+
+        editFields.innerHTML = `
+        <h1 class="heading">Edit User Details</h1>
+        <form method="post" onsubmit="return onEditSubmit()">
+            <div class="form_c register">
+                <div class="input-containers">
+                    <label class="tag" for="e_first_name">First name</label>
+                    <input id="e_f_name" type="first_name" name="e_first_name" placeholder="First name" maxlength="30"
+                        value="{{ user['first_name'] }}">
+                    <div class="alert" id="e_f_name-alert">First name field is required</div>
+                </div>
+
+                <div class="input-containers">
+                    <label class="tag" for="last_name">Last name</label>
+                    <input id="e_l_name" type="last_name" name="e_last_name" placeholder="Last name"
+                        value="{{ user['last_name'] }}">
+                    <div class="alert" id="e_l_name-alert">Last name field is required</div>
+                </div>
+                <div class="input-containers">
+                    <label class="tag" for="address">Address</label>
+                    <textarea id="e_address" name="e_address" placeholder="Address"
+                        class="bigtext">{{ user['address'] }}</textarea>
+                    <div class="alert" id="e_address-alert">Address field is required</div>
+                </div>
+                <div id="change-pass">
+                    <input type="checkbox" name="pass" id="change-pass-button" onchange="onChangeSelect(event)"><span>Change password</span>
+                </div>
+            </div>
+            ${genderSelect}
+            
+            <div class="input-containers">
+                <label class="tag" for="hobbies">Hobbies</label>
+                <div class="hobbies">
+                    ${hobbiesSelect}
+                </div>
+                <div class="alert" id="e_hobbies-alert">Select atleast one hobby</div>
+            </div>
+            <button type="submit">Submit</button>
+        </form>`
+    }
+</script>
 {% endblock %}
